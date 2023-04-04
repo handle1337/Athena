@@ -1,6 +1,6 @@
 import json
 import filesystem
-import db_handler
+#import db_handler
 from discovery import domain
 from configparser import ConfigParser
 from termcolor import colored

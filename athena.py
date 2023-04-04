@@ -13,7 +13,7 @@ print(BANNER)
 import schedule
 
 import filesystem
-import db_handler
+#import db_handler
 import core
 from discovery import domain
 from plugins import cvelookup

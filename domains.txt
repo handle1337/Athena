@@ -1,2 +1,2 @@
-http://test.test.com
-http://google.com
+test.test.com
+google.com

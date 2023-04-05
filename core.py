@@ -1,9 +1,10 @@
 import json
 import filesystem
-#import db_handler
+# import db_handler
 from discovery import domain
 from configparser import ConfigParser
-from termcolor import colored
+
+# from termcolor import colored
 
 json_file = filesystem.get_json_filename()
 
@@ -70,7 +71,7 @@ def get_program_domains(program) -> list:
     domains = []
 
     program_obj = get_program_object(program)
-    #print(f"\n{program_obj['domains']} \n {type(program_obj['domains'])}")
+    # print(f"\n{program_obj['domains']} \n {type(program_obj['domains'])}")
 
     for domain in program_obj['domains']:
         domains.append(domain.get('url'))

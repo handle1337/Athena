@@ -28,7 +28,8 @@ def find_subdomains(in_file, out_file):
     print(f"in: {in_file}\n")
     print(f"out: {out_file}\n")
 
-    subfinder_process = subprocess.run(f"subfinder -silent -dL {in_file} -o {out_file}", stdout=sys.stdout,
+    # TODO: add -silent flag
+    subfinder_process = subprocess.run(f"subfinder -dL {in_file} -o {out_file}", stdout=sys.stdout,
                                        shell=True,
                                        stderr=subprocess.STDOUT)
 

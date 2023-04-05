@@ -1,4 +1,4 @@
-import mariadb
+"""import mariadb
 import filesystem
 import logging
 from logger import output
@@ -77,13 +77,14 @@ def insert_program(name, domains, private=0, platform=1, expl_level=1, priority=
     cursor.execute("INSERT INTO program ('name', 'platform_id', 'expl_level', 'priority') VALUES (?,?,?,?)")
 
 
-    """try:
+    try:
 
     except mariadb.Error as e:
         print(f"[!] Error inserting data {e}")
     finally:
         conn.close()
-    """
+
 
 def __del__():
     conn.close()
+"""

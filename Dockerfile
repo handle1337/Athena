@@ -26,8 +26,9 @@ ENV DISCORD_TOKEN=""
 # Install go
 WORKDIR /tmp
 RUN \
-    wget -q https://dl.google.com/go/go1.18.3.linux-amd64.tar.gz -O go.tar.gz && \
-    tar -C /usr/local -xzf go.tar.gz
+    wget -q https://go.dev/dl/go1.20.4.linux-amd64.tar.gz && \
+    rm -rf /usr/local/go && \
+    tar -C /usr/local -xzf go1.20.4.linux-amd64.tar.gz
 ENV GOPATH "/root/go"
 ENV PATH "$PATH:/usr/local/go/bin:$GOPATH/bin"
 

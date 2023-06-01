@@ -3,6 +3,6 @@ bs4
 requests
 shodan
 discord
-mariadb
+
 
 schedule

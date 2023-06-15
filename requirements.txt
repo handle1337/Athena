@@ -3,6 +3,7 @@ bs4
 requests
 shodan
 discord
+python-nmap
 
 
 schedule

@@ -50,7 +50,7 @@ def get_program_object(program: str, data) -> dict:
     """
     Get program JSON object information
 
-    :return: JSON obj dictionary
+    :return: JSON object
     """
     programs = get_programs_sorted(data)
     for program_obj in programs:
@@ -61,29 +61,49 @@ def get_program_object(program: str, data) -> dict:
 
 def get_program_domains(program: str) -> list:
     """
-    Get program JSON object information
+    Get program JSON object dictionaries in domains array
 
-    :return: list of domains
+    :return: List of domains belonging to a program
     """
-
-    domains = []
 
     with open(json_file, 'r') as f:
         data = json.load(f)
         program_obj = get_program_object(program, data)
-        for domain in program_obj['domains']:
-            domains.append(domain)
+        return program_obj['domains']
 
-    return domains
 
 
 def add_program_domain(program: str, new_domain: str):
+    """
+    Adds domain dict to program JSON object
+
+    :return:
+    """
 
     with open(json_file, 'r') as f:
         data = json.load(f)
 
     program_obj = get_program_object(program, data)
-    program_obj['domains'].append({'url': new_domain})
+    program_obj['domains'].append(new_domain)
+
+    with open(json_file, "w") as f:
+        json.dump(data, f, indent=4)
+
+def remove_program_domain(program: str, domain_to_remove: str):
+    """
+    Adds domain dict to program JSON object
+
+    :return:
+    """
+
+    with open(json_file, 'r') as f:
+        data = json.load(f)
+
+    program_obj = get_program_object(program, data)
+    try:
+        program_obj['domains'].remove(domain_to_remove)
+    except:
+        pass
 
     with open(json_file, "w") as f:
         json.dump(data, f, indent=4)

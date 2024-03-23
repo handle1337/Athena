@@ -20,11 +20,17 @@ class Program:
         self.domains = core.get_program_domains(name)
         self.name = name
 
+    def set_priority(self, priority: int):
+        pass
+    def get_priority(self, priority: int):
+        pass
+
     def add_domain(self, domain: str):
         core.add_program_domain(self.name, domain)
 
-    def fetch(self):
-        pass
+    def remove_domain(self, domain: str):
+        core.remove_program_domain(self.name, domain)
+
 
 
 

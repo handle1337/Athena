@@ -21,7 +21,9 @@ def filesystem_remove_test(path):
 def json_parser_test():
     print(core.get_programs_unsorted())
     print(core.get_programs_sorted())
-    print(core.add_program_domain("test", "lo.com"))
+   # core.add_program_domain("test", "ldfo.com")
+    core.remove_program_domain("test", "ldfo.com")
+    
 
 
 def test_obj_dumps():

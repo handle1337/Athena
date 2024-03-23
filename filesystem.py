@@ -2,10 +2,6 @@ import os
 import shutil
 from configparser import ConfigParser
 
-
-#TODO: turn this into a class
-
-
 conf_file = "config.INI"
 config = ConfigParser()
 config.read(conf_file)

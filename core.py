@@ -9,9 +9,7 @@ from configparser import ConfigParser
 json_file = filesystem.get_json_filename()
 
 
-# TODO: Fetch programs from BB platforms
-
-def get_programs_unsorted() -> list:
+def get_programs_unsorted(data=None) -> list:
     """
     Get all programs from set JSON targets file
 
@@ -22,7 +20,8 @@ def get_programs_unsorted() -> list:
     programs = []
     try:
         with open(json_file, 'r') as f:
-            data = json.load(f)
+            if not data:
+                data = json.load(f)
             for i in data["program"]:
                 programs.append(i)
             return programs
@@ -31,7 +30,7 @@ def get_programs_unsorted() -> list:
         return []
 
 
-def get_programs_sorted():
+def get_programs_sorted(data=None):
     """
     Get all programs sorted by priority level from set JSON targets file
 
@@ -39,7 +38,7 @@ def get_programs_sorted():
 
     :return: List of JSON objects
     """
-    programs = get_programs_unsorted()
+    programs = get_programs_unsorted(data) if data else get_programs_unsorted()
     if not programs:
         return []
     else:
@@ -47,21 +46,20 @@ def get_programs_sorted():
         return programs
 
 
-def get_program_object(program) -> dict:
+def get_program_object(program: str, data) -> dict:
     """
     Get program JSON object information
 
     :return: JSON obj dictionary
     """
-    programs = get_programs_sorted()
-    print(programs)
-    for program_object in programs:
-        if program_object["name"] == program:
-            return program_object
+    programs = get_programs_sorted(data)
+    for program_obj in programs:
+        if program_obj["name"] == program:
+            return program_obj
     return {}
 
 
-def get_program_domains(program) -> list:
+def get_program_domains(program: str) -> list:
     """
     Get program JSON object information
 
@@ -70,13 +68,25 @@ def get_program_domains(program) -> list:
 
     domains = []
 
-    program_obj = get_program_object(program)
-    # print(f"\n{program_obj['domains']} \n {type(program_obj['domains'])}")
-
-    for domain in program_obj['domains']:
-        domains.append(domain.get('url'))
+    with open(json_file, 'r') as f:
+        data = json.load(f)
+        program_obj = get_program_object(program, data)
+        for domain in program_obj['domains']:
+            domains.append(domain)
 
     return domains
+
+
+def add_program_domain(program: str, new_domain: str):
+
+    with open(json_file, 'r') as f:
+        data = json.load(f)
+
+    program_obj = get_program_object(program, data)
+    program_obj['domains'].append({'url': new_domain})
+
+    with open(json_file, "w") as f:
+        json.dump(data, f, indent=4)
 
 
 def json_to_db_bulk():
@@ -85,8 +95,8 @@ def json_to_db_bulk():
     :return:
     """
 
-
-def json_to_db(program) -> dict:
+"""
+db(program: str) -> dict:
     program = get_program_object(program)
     print(f"{program['name']}")
     db_handler.insert_domain(program['name'])
@@ -96,3 +106,4 @@ def json_to_db(program) -> dict:
     print(f"{program['priority']}")
     print(f"{program['domains']}")
     return program
+    """

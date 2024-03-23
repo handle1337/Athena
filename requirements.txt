@@ -4,6 +4,6 @@ requests
 shodan
 discord
 python-nmap
-
+surrealdb
 
 schedule

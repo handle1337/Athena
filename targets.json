@@ -1,19 +1,24 @@
 {
-  "program": [
-    {
-      "name": "test",
-      "url": "test.com",
-      "expl_level": "1",
-      "priority" : "1",
-      "domains": [
+    "program": [
         {
-          "url": "test.test.com"
-        },
-        {
-          "url": "google.com"
+            "name": "test",
+            "url": "test.com",
+            "expl_level": "1",
+            "priority": "1",
+            "domains": [
+                {
+                    "url": "test.test.com"
+                },
+                {
+                    "url": "google.com"
+                },
+                {
+                    "url": "lo.com"
+                },
+                {
+                    "url": "lo.com"
+                }
+            ]
         }
-      ]
-
-    }
-  ]
+    ]
 }

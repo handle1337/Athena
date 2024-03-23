@@ -7,30 +7,25 @@ BANNER = """
 ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝
 """
 
-
-# TODO: Implement asyncio
-
 import schedule
 
 import filesystem
-import db_handler
 import core
 from discovery import domain
 from scanning import ip
-from plugins import cvelookup
 
-"""
-class Target:
-    def __init__(self, name):
-        self.domains = []
+
+class Program:
+    def __init__(self, name: str):
+        self.domains = core.get_program_domains(name)
         self.name = name
 
-    def add_parent_domain(self, parent_domain):
-        self.domains.append(parent_domain)
+    def add_domain(self, domain: str):
+        core.add_program_domain(self.name, domain)
 
     def fetch(self):
         pass
-"""
+
 
 
 def recon():

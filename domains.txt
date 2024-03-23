@@ -1,2 +1,4 @@
-test.test.com
-google.com
+{'url': 'test.test.com'}
+{'url': 'google.com'}
+{'url': 'lo.com'}
+{'url': 'lo.com'}
